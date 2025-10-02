@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Task Manager</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="login-container">
+    <form class="login-box" onsubmit="login(event)">
+      <h2>Login to Task Manager</h2>
+      <label for="username">Username</label>
+      <input type="text" id="username" required />
+      <label for="password">Password</label>
+      <input type="password" id="password" required />
+      <button type="submit">Login</button>
+      <div class="links">
+        <a href="signup.html">Don't have an account? Sign Up</a>
+        <a href="forgot.html">Forgot Password?</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function login(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      // Normally login validation here...
+      sessionStorage.setItem("currentUser", JSON.stringify({ name: username }));
+      localStorage.setItem("loggedIn", "true");
+      window.location.href = "dashboard.html";
+    }
+  </script>
+</body>
+</html>

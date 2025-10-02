@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager with Progress Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <span class="logo">COMPANYNAME</span>
+        <ul class="nav-links">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Our Service</a></li>
+            <li><a href="#">Career</a></li>
+            <li><a href="#">Partnership</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="hero">
+        <h1>Creative.</h1>
+        <h2>Landing Page Template 4K Layout</h2>
+        <p>
+            Many users find it hard to manage daily tasks and track progress.<br>
+            This app allows users to add, edit, complete, and delete tasks while visualizing progress.
+            It improves personal productivity and time management.
+        </p>
+        <a href="#task-section" class="btn">Learn More</a>
+    </div>
+    <section id="task-section">
+        <!-- Task Manager App Section -->
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="Add new task..." required>
+            <button type="submit">Add Task</button>
+        </form>
+        <div id="progress-bar"><div id="progress"></div></div>
+        <div id="progress-text">0% completed</div>
+        <ul id="task-list"></ul>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>

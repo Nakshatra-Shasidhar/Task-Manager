@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Task Manager Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="dashboard-header">
+    <h1>Welcome, <span id="usernameDisplay"></span>!</h1>
+
+    <div class="profile-menu">
+      <div class="profile-icon" onclick="toggleProfileMenu()">
+        <img
+          src="https://ui-avatars.com/api/?name=User&background=4f9cf7&color=fff&rounded=true"
+          alt="Profile"
+          id="userAvatar"
+        />
+      </div>
+      <div class="profile-dropdown" id="profileDropdown">
+        <div><a href="profile.html">Profile</a></div>
+        <div><a href="#" onclick="logOut()">Logout</a></div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="taskbar">
+      <input type="text" id="taskTitle" placeholder="Task title" />
+      <input type="datetime-local" id="taskDue" />
+      <button onclick="addTask()">Add Task</button>
+    </section>
+
+    <section class="tasks-section">
+      <h2>Tasks</h2>
+      <ul id="taskList"></ul>
+    </section>
+
+    <section class="calendar-section">
+      <h2>Task Calendar</h2>
+      <div class="calendar-controls">
+        <button onclick="changeCalendarMonth(-1)">&#9664; Prev</button>
+        <span id="calendarCurrentMonth"></span>
+        <button onclick="changeCalendarMonth(1)">Next &#9654;</button>
+      </div>
+      <div id="calendar" class="calendar"></div>
+    </section>
+
+    <section class="graphs-section">
+      <h2>Progress Graphs</h2>
+      <canvas id="weeklyProgress"></canvas>
+      <canvas id="monthlyProgress"></canvas>
+    </section>
+
+    <section class="summary-section">
+      <h2>Auto Summary</h2>
+      <div id="summary"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    function toggleProfileMenu() {
+      const menu = document.getElementById("profileDropdown");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+    document.addEventListener("click", function (e) {
+      if (
+        !e.target.classList.contains("profile-icon") &&
+        !e.target.closest(".profile-dropdown")
+      ) {
+        document.getElementById("profileDropdown").style.display = "none";
+      }
+    });
+
+    function personalizeWelcomeAndProfile() {
+      const user = JSON.parse(sessionStorage.getItem("currentUser")) || {};
+      document.getElementById("usernameDisplay").textContent = user.name || "User";
+      document.getElementById("userAvatar").src =
+        `https://ui-avatars.com/api/?name=${encodeURIComponent(
+          user.name || "User"
+        )}&background=4f9cf7&color=fff&rounded=true`;
+      updateProfileProgress();
+    }
+    function updateProfileProgress() {
+      if (window.getProfileStats) {
+        const { week, month } = window.getProfileStats();
+        // Dashboard legend could be updated here if needed
+      }
+    }
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "login.html";
+    }
+    function logOut() {
+      localStorage.setItem("loggedIn", "false");
+      window.location.href = "login.html";
+    }
+    window.onload = function () {
+      personalizeWelcomeAndProfile();
+    };
+  </script>
+</body>
+</html>

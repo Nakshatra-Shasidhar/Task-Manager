@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Forgot Password</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="login-container">
+    <form class="login-box" onsubmit="resetPassword(event)">
+      <h2>Forgot Password</h2>
+      <label for="email">Enter your Email</label>
+      <input type="email" id="email" required />
+      <button type="submit">Reset Password</button>
+      <div class="links">
+        <a href="login.html">Back to Login</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function resetPassword(e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      alert("If this email exists in our system, password reset instructions will be sent.");
+      // Placeholder: no backend integration
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile - Task Manager</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="dashboard-header">
+    <h1>User Profile</h1>
+    <button class="logout-btn" onclick="logOut()">Logout</button>
+  </header>
+  <main>
+    <section class="profile-info">
+      <p><strong>Name:</strong> <span id="profileName"></span></p>
+      <p><strong>Age:</strong> <span id="profileAge"></span></p>
+      <p><strong>Purpose of Using Platform:</strong> <span id="profilePurpose"></span></p>
+    </section>
+
+    <section class="graphs-section">
+      <h2>Weekly Progress</h2>
+      <canvas id="weeklyProgress"></canvas>
+    </section>
+
+    <section class="graphs-section">
+      <h2>Monthly Progress</h2>
+      <canvas id="monthlyProgress"></canvas>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    function logOut() {
+      localStorage.setItem("loggedIn", "false");
+      window.location.href = "login.html";
+    }
+    function personalizeProfile() {
+      const user = JSON.parse(sessionStorage.getItem("currentUser")) || {};
+      document.getElementById("profileName").textContent = user.name || "User";
+      document.getElementById("profileAge").textContent = user.age || "-";
+      document.getElementById("profilePurpose").textContent = user.purpose || "-";
+    }
+    window.onload = function () {
+      if (localStorage.getItem("loggedIn") !== "true") {
+        window.location.href = "login.html";
+        return;
+      }
+      personalizeProfile();
+      renderWeeklyProgress();
+      renderMonthlyProgress();
+    };
+  </script>
+</body>
+</html>

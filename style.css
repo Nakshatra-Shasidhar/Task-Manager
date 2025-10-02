@@ -1,0 +1,192 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #2b6cb0, #4f9cf7 80%);
+  color: #fff;
+  min-height: 100vh;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 40px 4px 40px;
+  gap: 12px;
+}
+.dashboard-header h1 {
+  font-size: 32px;
+  color: #fff;
+  font-weight: 700;
+}
+.logout-btn {
+  background: #e4564a;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+.logout-btn:hover {
+  background: #a13425;
+}
+
+.profile-menu {
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+}
+.profile-icon img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #4f9cf7;
+  background: #c4d7f7;
+}
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 56px;
+  min-width: 120px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(35,54,94,0.10);
+  padding: 8px 10px;
+  color: #23447e;
+  z-index: 99;
+}
+.profile-dropdown a {
+  display: block;
+  padding: 6px 8px;
+  color: #2b6cb0;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.profile-dropdown a:hover {
+  background: #e3f4fe;
+}
+
+main {
+  max-width: 920px;
+  margin: 30px auto;
+  background: rgba(255,255,255,0.11);
+  border-radius: 22px;
+  box-shadow: 0 8px 60px rgba(35,54,94,0.1);
+  padding: 32px 30px 24px 30px;
+}
+.taskbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+.taskbar input, .taskbar button {
+  border-radius: 7px;
+  font-size: 15px;
+  padding: 9px;
+  border: 1px solid #a2cdfa;
+}
+.taskbar button {
+  background: #2b6cb0;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  transition: background 0.2s;
+}
+.taskbar button:hover {
+  background: #1560b2;
+}
+.tasks-section, .calendar-section, .graphs-section, .summary-section, .profile-info {
+  background: rgba(255,255,255,0.28);
+  margin-top: 18px;
+  border-radius: 14px;
+  box-shadow: 0 2px 16px rgba(35,54,94,0.10);
+  padding: 18px 18px 24px 18px;
+  color: #133368;
+}
+.tasks-section h2, .calendar-section h2, .graphs-section h2, .summary-section h2, .profile-info h2 {
+  color: #2b6cb0;
+  margin-bottom: 16px;
+}
+#taskList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.17);
+  color: #133368;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+}
+.task-item.completed span {
+  text-decoration: line-through;
+  color: #b3c1da;
+}
+.task-item button {
+  margin-left: 4px;
+  padding: 4px 11px;
+  border-radius: 7px;
+  border: none;
+  background: #2b6cb0;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+.task-item button:hover {
+  background: #1560b2;
+}
+.calendar-controls {
+  margin-bottom: 8px;
+}
+.calendar-controls button {
+  border: none;
+  background: #2b6cb0;
+  color: #fff;
+  padding: 6px 13px;
+  border-radius: 7px;
+  margin: 0 8px;
+  cursor: pointer;
+}
+.calendar-controls button:hover {
+  background: #1560b2;
+}
+.calendar {
+  overflow-x: auto;
+}
+.calendar table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.calendar th,
+.calendar td {
+  text-align: center;
+  padding: 6px 0;
+}
+.calendar th {
+  color: #23447e;
+  font-size: 16px;
+}
+.calendar td {
+  background: rgba(200, 230, 255, 0.48);
+  border-radius: 7px;
+}
+.calendar .today {
+  border: 2px solid #2b6cb0;
+  background: #f2f8ff;
+  font-weight: 700;
+}
+.calendar .has-task {
+  background: #a5e5fc;
+}
+.summary-section {
+  font-size: 16px;
+}

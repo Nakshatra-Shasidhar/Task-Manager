@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up - Task Manager</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="login-container">
+    <form class="login-box" onsubmit="signup(event)">
+      <h2>Create a New Account</h2>
+      <label for="name">Name</label>
+      <input type="text" id="name" required />
+      
+      <label for="age">Age</label>
+      <input type="number" id="age" min="1" max="120" required />
+      
+      <label for="purpose">What are you using this platform for?</label>
+      <select id="purpose" required>
+        <option value="" disabled selected>Select purpose</option>
+        <option value="Educational Purpose">Educational Purpose</option>
+        <option value="Carrier Purpose">Carrier Purpose</option>
+        <option value="Personal Use">Personal Use</option>
+      </select>
+      
+      <button type="submit">Sign Up</button>
+      <div class="links">
+        <a href="login.html">Already have an account? Login</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function signup(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const age = document.getElementById("age").value;
+      const purpose = document.getElementById("purpose").value;
+      if (!name || !age || !purpose) {
+        alert("Please fill in all fields");
+        return;
+      }
+      const userData = { name, age, purpose };
+      sessionStorage.setItem("currentUser", JSON.stringify(userData));
+      localStorage.setItem("loggedIn", "true");
+      window.location.href = "dashboard.html";
+    }
+  </script>
+</body>
+</html>
